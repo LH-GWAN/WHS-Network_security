@@ -53,7 +53,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header,
 
     int tcp_header_len = TH_OFF(tcp) * 4;
 
-    printf("=============== TCP Packet ===============\n");
+    printf("TCP Packet\n");
 
     printf("[Ethernet Header]\n");
     printf("   Src MAC : %02x:%02x:%02x:%02x:%02x:%02x\n",
