@@ -36,7 +36,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
     const u_char *payload = packet + sizeof(struct ethheader) + ip_header_len + tcp_header_len;
     int payload_len = ntohs(ip->iph_len) - ip_header_len - tcp_header_len;
 
-    printf("Src MAC : "); print_mac(eth->ether_shost);
+    printf("\nSrc MAC : "); print_mac(eth->ether_shost);
     printf("Dst MAC : "); print_mac(eth->ether_dhost);
     printf("Src IP : %s\n", inet_ntoa(ip->iph_sourceip));
     printf("Dst IP : %s\n", inet_ntoa(ip->iph_destip));
@@ -64,7 +64,7 @@ int main(void)
     char filter_exp[] = "tcp";
     bpf_u_int32 net = 0;
     
-    handle = pcap_open_live("enp0", BUFSIZ, 1, 1000, errbuf);
+    handle = pcap_open_live("eth0", BUFSIZ, 1, 1000, errbuf);
     if (handle == NULL) 
     {
         fprintf(stderr, "실패: %s\n", errbuf);
